@@ -1,17 +1,17 @@
-# Use the official .NET SDK image to build the project
+# Build aşaması
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
-RUN dotnet restore
+# Proje dosyasını restore için kopyala
+COPY TatilSeyahat1/*.csproj ./TatilSeyahat1/
+RUN dotnet restore ./TatilSeyahat1/TatilSeyahat1.csproj
 
-# Copy everything else and build
+# Tüm dosyaları kopyala ve publish et
 COPY . ./
-RUN dotnet publish -c Release -o out
+RUN dotnet publish TatilSeyahat1/TatilSeyahat1.csproj -c Release -o out
 
-# Build runtime image
+# Runtime aşaması
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
-COPY --from=build /app/out .
+COPY --from=build /app/out ./
 ENTRYPOINT ["dotnet", "TatilSeyahat1.dll"]
