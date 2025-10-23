@@ -1,0 +1,107 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<html>
+<head>
+    <title>Gezi Blok Sitem</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="@Url.Content("~/web/css/style.css")" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="@Url.Content("~/web/css/slider.css")" rel="stylesheet" type="text/css" media="all" />
+    <script src="@Url.Content("~/web/js/jquery.min.js")"></script>
+    <script src="@Url.Content("~/web/js/responsiveslides.min.js")"></script>
+
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 1
+            $("#slider1").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+            });
+        });
+        const btn = document.getElementById('menu-btn');
+        const nav = document.getElementById('main-nav');
+        btn.addEventListener('click', () => {
+            const open = nav.hidden;
+            nav.hidden = !open;
+            btn.setAttribute('aria-expanded', open);
+        });
+
+    </script>
+  
+
+</head>
+<body>
+    <div class="header">
+        <div class="wrap">
+            <div class="logo"><a href="#"><img src="@Url.Content("~/web/images/logo2.png")" alt="" /></a></div>
+            <div class="con-right">
+                <div class="grid1-l-img">
+                    <img src="@Url.Content("~/web/images/contact.png")" alt="">
+                </div>
+                <div class="grid1-l-desc">
+                    <p>Whatsapp : +90 111-1111111</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+    <div class="header-bottom">
+        <div class="wrap">
+            <ul id="nav">
+                <li><a href="/Default/Index">Ana Sayfa</a></li>
+                <li><a class="hsubs" href="/About/Index">Hakkımızda</a></li>
+                @*<li>
+                    <a class="hsubs" href="#">Rehber</a>
+                    <ul class="subs">
+                        <li><a href="#">Oteller</a></li>
+                        <li><a href="#">Restoranlar</a></li>
+                        <li><a href="#">Müzeler</a></li>
+                    </ul>
+                </li>*@
+                <li><a class="hsubs" href="/Blog/Index">Bloğum</a></li>
+                <li><a href="/Default/İletisim">İletişim</a></li>
+            </ul>
+        </div>
+        @*<button id="menu-btn" aria-expanded="false">☰</button>
+        <nav id="main-nav" hidden>
+            <a href="/Default/Index">Anasayfa</a>
+            <a href="/About/Index">Hakkımızda</a>
+            <a href="/Blog/Index">Bloğum</a>
+            <a href="/Default/İletisim">İletişim</a>
+        </nav>*@
+    </div>
+    
+    <div class"content">
+        @RenderBody() <!-- render body websitesindeki değişken bölümler index.cs ten geliyor bu kodlar-->
+    </div>
+    <div class="footer-bottom">
+        <div class="wrap">
+            <div class="copy">
+                <p>&copy; 2025 Tatil-Seyahat Sitesi. Tüm Hakları Saklıdır.</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
